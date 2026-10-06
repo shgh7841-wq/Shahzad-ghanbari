@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>شهزاد قنبری | آموزش هوش مصنوعی</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --cream:#fff8e9;
+    --cream2:#f5e7c8;
+    --gold:#c58a19;
+    --gold-light:#e7b84f;
+    --brown:#4b2d0b;
+    --dark:#241b10;
+    --white:#fffdf8;
+}
+
+body{
+    font-family:'Vazirmatn',Tahoma,sans-serif;
+    background:var(--cream);
+    color:var(--dark);
+    line-height:1.9;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    background:rgba(255,250,240,.92);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #ead7b2;
+}
+
+.navbar{
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:20px;
+    font-weight:900;
+}
+
+.logo-icon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#fff2c9,#c58a19);
+    color:white;
+    font-size:25px;
+    box-shadow:0 8px 20px rgba(197,138,25,.25);
+}
+
+.logo small{
+    display:block;
+    font-size:10px;
+    color:var(--gold);
+}
+
+.menu{
+    display:flex;
+    gap:25px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.menu a{
+    transition:.3s;
+}
+
+.menu a:hover{
+    color:var(--gold);
+}
+
+.btn{
+    display:inline-block;
+    border:0;
+    cursor:pointer;
+    padding:12px 25px;
+    border-radius:30px;
+    background:linear-gradient(135deg,var(--gold-light),#a96d08);
+    color:white;
+    font-weight:800;
+    box-shadow:0 8px 20px rgba(170,110,10,.25);
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    background:transparent;
+    color:var(--gold);
+    border:1px solid var(--gold);
+    box-shadow:none;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:730px;
+    padding-top:90px;
+    display:flex;
+    align-items:center;
+    background:
+    radial-gradient(circle at center,#fffdf8 0%,#fff2d5 50%,#eed9ae 100%);
+    overflow:hidden;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1.2fr 1fr;
+    gap:20px;
+    align-items:center;
+}
+
+/* ربات سمت چپ */
+
+.robot-box{
+    height:480px;
+    border-radius:35px;
+    background:linear-gradient(145deg,#f0dfba,#fffaf0);
+    box-shadow:0 20px 55px rgba(91,61,15,.15);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.robot-box::before{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:1px solid #dfc58f;
+    border-radius:28px;
+}
+
+.robot{
+    font-size:180px;
+    animation:float 4s ease-in-out infinite;
+    filter:drop-shadow(0 20px 20px rgba(50,30,5,.2));
+}
+
+/* متن وسط */
+
+.hero-text{
+    text-align:center;
+}
+
+.hero-text .small-title{
+    color:var(--gold);
+    font-weight:800;
+}
+
+.hero-text h1{
+    font-size:65px;
+    line-height:1.15;
+    margin:15px 0;
+    font-weight:900;
+}
+
+.hero-text h1 span{
+    color:var(--gold);
+    display:block;
+}
+
+.hero-text p{
+    color:#6e6253;
+    font-size:17px;
+}
+
+.hero-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+/* برنامه های هوش مصنوعی سمت راست */
+
+.ai-tools{
+    height:480px;
+    position:relative;
+}
+
+.ai-card{
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:rgba(255,253,248,.9);
+    border:1px solid #ead4a9;
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(84,57,13,.12);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-weight:800;
+    animation:float 5s ease-in-out infinite;
+}
+
+.ai-card span{
+    font-size:40px;
+}
+
+.chatgpt{top:20px;right:20px}
+.midjourney{top:120px;left:20px}
+.gemini{top:210px;right:90px}
+.dalle{bottom:40px;left:20px}
+.runway{bottom:100px;right:0}
+.claude{top:20px;left:110px}
+
+/* ================= STATS ================= */
+
+.stats{
+    background:#fffdf8;
+    border-top:1px solid #ead7b2;
+    border-bottom:1px solid #ead7b2;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:25px 0;
+}
+
+.stat{
+    text-align:center;
+    border-left:1px solid #ead7b2;
+}
+
+.stat:last-child{
+    border-left:0;
+}
+
+.stat strong{
+    color:var(--gold);
+    font-size:28px;
+    display:block;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:90px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title span{
+    color:var(--gold);
+    font-weight:800;
+}
+
+.section-title h2{
+    font-size:36px;
+    margin:5px 0;
+}
+
+.section-title p{
+    color:#776b5d;
+}
+
+/* ================= COURSES ================= */
+
+.courses{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.course{
+    background:#fffdf8;
+    border:1px solid #ead9ba;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(80,50,10,.1);
+    transition:.35s;
+}
+
+.course:hover{
+    transform:translateY(-10px);
+}
+
+.course-icon{
+    height:170px;
+    background:linear-gradient(135deg,#f0dfbb,#fffaf0);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:75px;
+}
+
+.course-content{
+    padding:20px;
+}
+
+.course-content h3{
+    margin-bottom:8px;
+}
+
+.course-content p{
+    font-size:13px;
+    color:#776b5d;
+    min-height:65px;
+}
+
+.price{
+    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price strong{
+    color:var(--gold);
+}
+
+.discount{
+    background:#f3dfb5;
+    color:#875b0a;
+    padding:5px 9px;
+    border-radius:15px;
+    font-size:11px;
+}
+
+/* ================= OFFER ================= */
+
+.offer{
+    padding-top:0;
+}
+
+.offer-box{
+    border-radius:30px;
+    padding:45px;
+    text-align:center;
+    color:white;
+    background:
+    linear-gradient(110deg,#4d2d06,#c58a19,#613807);
+    box-shadow:0 25px 50px rgba(85,52,10,.25);
+}
+
+.offer-box h2{
+    font-size:35px;
+}
+
+.offer-box strong{
+    font-size:60px;
+    color:#ffe5a0;
+}
+
+/* ================= FORMS ================= */
+
+.forms{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.panel{
+    background:#fffdf8;
+    border:1px solid #ead9ba;
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 15px 40px rgba(80,50,10,.09);
+}
+
+.panel h3{
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+.field{
+    margin:15px 0;
+}
+
+.field label{
+    display:block;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #dcc9a5;
+    border-radius:12px;
+    background:#fffaf0;
+    outline:none;
+}
+
+.field input:focus,
+.field select:focus{
+    border-color:var(--gold);
+}
+
+.panel .btn{
+    width:100%;
+}
+
+/* نظرسنجی */
+
+.poll-option{
+    display:block;
+    padding:13px;
+    border:1px solid #ead9ba;
+    border-radius:12px;
+    margin:10px 0;
+    cursor:pointer;
+}
+
+.poll-option:hover{
+    background:#fff5dc;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    background:#f3e5c8;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.contact-item{
+    display:flex;
+    gap:15px;
+    margin:20px 0;
+}
+
+.contact-icon{
+    width:45px;
+    height:45px;
+    border-radius:13px;
+    background:#fff9e9;
+    color:var(--gold);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:20px;
+}
+
+.social{
+    display:flex;
+    gap:10px;
+}
+
+.social a{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#fff8e8;
+    color:var(--gold);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#2a1b09;
+    color:#ffeec5;
+    padding:35px 0;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* ================= ANIMATION ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:.8s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:none;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:950px){
+
+    .menu{
+        display:none;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-text{
+        order:1;
+    }
+
+    .robot-box{
+        order:2;
+        height:300px;
+    }
+
+    .ai-tools{
+        order:3;
+        height:330px;
+    }
+
+    .hero-text h1{
+        font-size:45px;
+    }
+
+    .courses{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .forms,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .courses{
+        grid-template-columns:1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .hero-text h1{
+        font-size:40px;
+    }
+
+    .offer-box{
+        padding:30px 15px;
+    }
+
+    .offer-box h2{
+        font-size:27px;
+    }
+
+    .footer{
+        flex-direction:column;
+        text-align:center;
+        gap:15px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="container navbar">
+
+<a href="#home" class="logo">
+
+<div class="logo-icon">
+✦
+</div>
+
+<div>
+شهزاد قنبری
+<small>مدرس و مشاور هوش مصنوعی</small>
+</div>
+
+</a>
+
+<nav class="menu">
+
+<a href="#home">خانه</a>
+<a href="#courses">دوره‌ها</a>
+<a href="#register">ثبت‌نام</a>
+<a href="#survey">نظرسنجی</a>
+<a href="#contact">تماس با ما</a>
+
+</nav>
+
+<a href="#register" class="btn">
+ثبت نام
+</a>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<!-- ربات سمت چپ -->
+
+<div class="robot-box reveal">
+
+<div class="robot">
+🤖
+</div>
+
+</div>
+
+
+<!-- متن -->
+
+<div class="hero-text reveal">
+
+<div class="small-title">
+آموزش تخصصی و کاربردی
+</div>
+
+<h1>
+هوش مصنوعی
+<span>با شهزاد قنبری</span>
+</h1>
+
+<p>
+از ایده تا اجرا؛ هوش مصنوعی را یاد بگیرید
+و در کار، زندگی و کسب‌وکار خود به کار ببرید.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#courses" class="btn">
+مشاهده دوره‌ها
+</a>
+
+<a href="#register" class="btn btn-outline">
+ثبت‌نام اولیه
+</a>
+
+</div>
+
+</div>
+
+
+<!-- ابزارهای هوش مصنوعی سمت راست -->
+
+<div class="ai-tools reveal">
+
+<div class="ai-card chatgpt">
+<span>💬</span>
+ChatGPT
+</div>
+
+<div class="ai-card midjourney">
+<span>🎨</span>
+Midjourney
+</div>
+
+<div class="ai-card gemini">
+<span>✨</span>
+Gemini
+</div>
+
+<div class="ai-card dalle">
+<span>🖼️</span>
+DALL·E
+</div>
+
+<div class="ai-card runway">
+<span>🎬</span>
+Runway
+</div>
+
+<div class="ai-card claude">
+<span>✍️</span>
+Claude
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<div class="stats">
+
+<div class="container stats-grid">
+
+<div class="stat">
+<strong>+۱۰۰</strong>
+دانشجو
+</div>
+
+<div class="stat">
+<strong>+۲۰</strong>
+پروژه عملی
+</div>
+
+<div class="stat">
+<strong>۲۴/۷</strong>
+پشتیبانی
+</div>
+
+<div class="stat">
+<strong>۱۰۰٪</strong>
+کاربردی
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= COURSES ================= -->
+
+<section id="courses">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<span>AI COURSES</span>
+
+<h2>
+دوره‌های آموزشی
+</h2>
+
+<p>
+از مبانی هوش مصنوعی تا اجرای پروژه‌های واقعی
+</p>
+
+</div>
+
+
+<div class="courses">
+
+
+<div class="course reveal">
+
+<div class="course-icon">
+💬
+</div>
+
+<div class="course-content">
+
+<h3>
+کاربرد عملی ChatGPT
+</h3>
+
+<p>
+پرامپت‌نویسی، تولید محتوا،
+تحلیل اطلاعات و افزایش بهره‌وری.
+</p>
+
+<div class="price">
+
+<strong>
+۲,۹۰۰,۰۰۰ تومان
+</strong>
+
+<span class="discount">
+۲۰٪ تخفیف
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="course reveal">
+
+<div class="course-icon">
+🎨
+</div>
+
+<div class="course-content">
+
+<h3>
+تولید تصویر با هوش مصنوعی
+</h3>
+
+<p>
+آموزش Midjourney، DALL·E
+و ابزارهای حرفه‌ای تولید تصویر.
+</p>
+
+<div class="price">
+
+<strong>
+۳,۲۰۰,۰۰۰ تومان
+</strong>
+
+<span class="discount">
+۲۰٪ تخفیف
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="course reveal">
+
+<div class="course-icon">
+🎬
+</div>
+
+<div class="course-content">
+
+<h3>
+تولید ویدئو با AI
+</h3>
+
+<p>
+ساخت ویدئوهای حرفه‌ای
+با ابزارهای جدید هوش مصنوعی.
+</p>
+
+<div class="price">
+
+<strong>
+۳,۸۰۰,۰۰۰ تومان
+</strong>
+
+<span class="discount">
+۲۰٪ تخفیف
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="course reveal">
+
+<div class="course-icon">
+🚀
+</div>
+
+<div class="course-content">
+
+<h3>
+هوش مصنوعی در کسب‌وکار
+</h3>
+
+<p>
+اتوماسیون، بازاریابی،
+تولید محتوا و افزایش بهره‌وری.
+</p>
+
+<div class="price">
+
+<strong>
+۴,۵۰۰,۰۰۰ تومان
+</strong>
+
+<span class="discount">
+۲۰٪ تخفیف
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= DISCOUNT ================= -->
+
+<section class="offer">
+
+<div class="container">
+
+<div class="offer-box reveal">
+
+<h2>
+تخفیف ویژه دهه فجر
+</h2>
+
+<strong>
+۲۰٪
+</strong>
+
+<p>
+فرصت محدود برای شروع یادگیری هوش مصنوعی
+</p>
+
+<a href="#register" class="btn"
+style="background:white;color:#7b4d08">
+
+استفاده از تخفیف
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= REGISTER + SURVEY ================= -->
+
+<section id="register">
+
+<div class="container forms">
+
+
+<!-- ثبت نام -->
+
+<div class="panel reveal">
+
+<h3>
+ثبت‌نام اولیه
+</h3>
+
+<p>
+فرم را تکمیل کنید تا برای مشاوره با شما تماس بگیریم.
+</p>
+
+<form id="registerForm">
+
+<div class="field">
+
+<label>
+نام و نام خانوادگی
+</label>
+
+<input
+type="text"
+id="name"
+placeholder="نام و نام خانوادگی"
+required
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+شماره موبایل
+</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="09123456789"
+required
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+دوره موردنظر
+</label>
+
+<select id="course">
+
+<option>
+کاربرد عملی ChatGPT
+</option>
+
+<option>
+تولید تصویر با هوش مصنوعی
+</option>
+
+<option>
+تولید ویدئو با AI
+</option>
+
+<option>
+هوش مصنوعی در کسب‌وکار
+</option>
+
+</select>
+
+</div>
+
+
+<button class="btn" type="submit">
+ثبت درخواست
+</button>
+
+</form>
+
+</div>
+
+
+<!-- نظرسنجی -->
+
+<div class="panel reveal" id="survey">
+
+<h3>
+نظرسنجی
+</h3>
+
+<p>
+کدام موضوع هوش مصنوعی برای شما جذاب‌تر است؟
+</p>
+
+
+<form id="surveyForm">
+
+<label class="poll-option">
+<input type="radio" name="poll" value="ChatGPT">
+ChatGPT و پرامپت‌نویسی
+</label>
+
+<label class="poll-option">
+<input type="radio" name="poll" value="Image">
+تولید تصویر
+</label>
+
+<label class="poll-option">
+<input type="radio" name="poll" value="Video">
+تولید ویدئو
+</label>
+
+<label class="poll-option">
+<input type="radio" name="poll" value="Business">
+هوش مصنوعی در کسب‌وکار
+</label>
+
+<button class="btn" type="submit">
+ثبت رأی
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+<div class="container contact-grid">
+
+
+<div class="panel reveal">
+
+<div class="section-title" style="text-align:right;margin-bottom:20px">
+
+<span>
+CONTACT
+</span>
+
+<h2>
+تماس و آدرس
+</h2>
+
+</div>
+
+
+<div class="contact-item">
+
+<div class="contact-icon">
+☎
+</div>
+
+<div>
+
+<strong>
+تلفن
+</strong>
+
+<br>
+
+۰۹۱۲ ۳۴۵ ۶۷۸۹
+
+</div>
+
+</div>
+
+
+<div class="contact-item">
+
+<div class="contact-icon">
+✉
+</div>
+
+<div>
+
+<strong>
+ایمیل
+</strong>
+
+<br>
+
+info@example.ir
+
+</div>
+
+</div>
+
+
+<div class="contact-item">
+
+<div class="contact-icon">
+⌖
+</div>
+
+<div>
+
+<strong>
+آدرس
+</strong>
+
+<br>
+
+قزوین، خیابان آزادی، دفتر آموزش هوش مصنوعی
+
+</div>
+
+</div>
+
+
+<div class="social">
+
+<a href="#">
+IG
+</a>
+
+<a href="#">
+TG
+</a>
+
+<a href="#">
+in
+</a>
+
+<a href="#">
+▶
+</a>
+
+</div>
+
+</div>
+
+
+<div class="panel reveal">
+
+<h3>
+چرا آموزش با شهزاد قنبری؟
+</h3>
+
+<p>
+آموزش‌ها با تمرکز بر پروژه‌های واقعی،
+ابزارهای روز هوش مصنوعی و مسیر قابل اجرا
+برای افراد، سازمان‌ها و کسب‌وکارها طراحی شده‌اند.
+</p>
+
+<br>
+
+<ul>
+
+<li>
+آموزش ساده و کاربردی
+</li>
+
+<li>
+پروژه‌های واقعی
+</li>
+
+<li>
+پشتیبانی پس از دوره
+</li>
+
+<li>
+دسترسی به محتوای آموزشی
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="container footer">
+
+<div>
+
+<strong>
+✦ شهزاد قنبری
+</strong>
+
+<br>
+
+<small>
+مدرس و مشاور هوش مصنوعی
+</small>
+
+</div>
+
+<div>
+آینده متعلق به کسانی است که امروز هوش مصنوعی را یاد می‌گیرند.
+</div>
+
+<div>
+© 2026
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* ثبت نام */
+
+document
+.getElementById("registerForm")
+.addEventListener("submit",function(event){
+
+event.preventDefault();
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let course=document.getElementById("course").value;
+
+if(phone.length < 10){
+
+alert("لطفاً شماره موبایل صحیح وارد کنید.");
+
+return;
+
+}
+
+let registrations =
+JSON.parse(
+localStorage.getItem("registrations") || "[]"
+);
+
+registrations.push({
+
+name:name,
+phone:phone,
+course:course,
+date:new Date().toLocaleString("fa-IR")
+
+});
+
+localStorage.setItem(
+"registrations",
+JSON.stringify(registrations)
+);
+
+alert(
+"ثبت‌نام اولیه شما با موفقیت انجام شد."
+);
+
+this.reset();
+
+});
+
+
+/* نظرسنجی */
+
+document
+.getElementById("surveyForm")
+.addEventListener("submit",function(event){
+
+event.preventDefault();
+
+let selected=
+document.querySelector(
+'input[name="poll"]:checked'
+);
+
+if(!selected){
+
+alert("لطفاً یک گزینه را انتخاب کنید.");
+
+return;
+
+}
+
+let votes=
+JSON.parse(
+localStorage.getItem("votes") || "{}"
+);
+
+votes[selected.value]=
+(votes[selected.value] || 0)+1;
+
+localStorage.setItem(
+"votes",
+JSON.stringify(votes)
+);
+
+alert(
+"رأی شما با موفقیت ثبت شد. ممنون از مشارکت شما 🌟"
+);
+
+});
+
+
+/* انیمیشن هنگام اسکرول */
+
+const observer=
+new IntersectionObserver(
+function(entries){
+
+entries.forEach(function(entry){
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("active");
+
+}
+
+});
+
+},
+{
+threshold:.15
+}
+);
+
+document
+.querySelectorAll(".reveal")
+.forEach(function(element){
+
+observer.observe(element);
+
+});
+
+</script>
+
+</body>
+</html>
